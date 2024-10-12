@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  margin-top: 20rem;
+  margin-top: 5rem;
   @media (max-width: 767px) and (min-width: 320px) {
     margin-top: 5rem;
   }
@@ -20,11 +20,6 @@ export const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Center = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 export const Flex = styled.div`
   display: flex;
   justify-content: center;
@@ -36,10 +31,6 @@ export const Flex = styled.div`
     display: flex;
     justify-content: center;
   }
-`;
-
-export const TitleWrapper = styled.div`
-  margin-bottom: 3rem;
 `;
 
 export const Title = styled.h1`
@@ -139,13 +130,5 @@ export const Block = styled.div`
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-`;
-
-export const Color = styled.div`
-  width: fit-content;
-  padding: 1.5rem;
-  border: solid;
-  border-radius: 3rem;
-  border-color: white;
-  border-width: 0.1rem;
+  height: 22rem;
 `;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as st from "./generator-style";
+import Message from "./UI/message/message";
 
 function PasswordGenerator() {
   const [passwords, setPasswords] = useState<string[]>([]);
@@ -66,45 +67,44 @@ function PasswordGenerator() {
   return (
     <st.Section>
       <st.Wrapper>
-        <st.Center>
-          <st.Color>
-            <st.TitleWrapper>
-              <st.Title>Генератор паролей</st.Title>
-            </st.TitleWrapper>
-            <st.Flex>
-              <st.PasswordBlock>
-                <st.SubTitle>Настройка пароля</st.SubTitle>
-                <label>
-                  <st.Span>Длина пароля:</st.Span>
-                  <st.Input type="number" value={length} onChange={handleLengthChange} />
-                </label>
-                {error && <st.Error>{error}</st.Error>}
-                <st.Span>Символы:</st.Span>
-                <st.PasswordValue>
-                  {checkboxOptions.map((option, index) => (
-                    <st.Label key={index}>
-                      <input
-                        type="checkbox"
-                        checked={option.checked}
-                        onChange={(e) => option.onChange(e.target.checked)}
-                      ></input>
-                      <st.Span>{option.label}</st.Span>
-                    </st.Label>
-                  ))}
-                </st.PasswordValue>
-                <st.Button
-                  onClick={() => {
-                    if (handleSubmit()) {
-                      generate(length);
-                    }
-                  }}
-                >
-                  Сгенерировать пароли
-                </st.Button>
-              </st.PasswordBlock>
-              <st.PasswordBlock>
-                <st.SubTitle>Сгенерированные пароли</st.SubTitle>
-                <st.Span>Нажми, чтобы скопировать</st.Span>
+        <div>
+          <st.Title>Генератор паролей</st.Title>
+          <st.Flex>
+            <st.PasswordBlock>
+              <st.SubTitle>Настройка пароля</st.SubTitle>
+              <label>
+                <st.Span>Длина пароля:</st.Span>
+                <st.Input type="number" value={length} onChange={handleLengthChange} />
+              </label>
+              {error && <st.Error>{error}</st.Error>}
+              <st.Span>Символы:</st.Span>
+              <st.PasswordValue>
+                {checkboxOptions.map((option, index) => (
+                  <st.Label key={index}>
+                    <input
+                      type="checkbox"
+                      checked={option.checked}
+                      onChange={(e) => option.onChange(e.target.checked)}
+                    ></input>
+                    <st.Span>{option.label}</st.Span>
+                  </st.Label>
+                ))}
+              </st.PasswordValue>
+              <st.Button
+                onClick={() => {
+                  if (handleSubmit()) {
+                    generate(length);
+                  }
+                }}
+              >
+                Сгенерировать пароли
+              </st.Button>
+            </st.PasswordBlock>
+            <st.PasswordBlock>
+              <st.SubTitle>Сгенерированные пароли</st.SubTitle>
+              <st.Span>Нажми, чтобы скопировать</st.Span>
+              <label>
+                <Message></Message>
                 <st.Block>
                   {passwords.map((password, index) => (
                     <st.TextPassword key={index} onClick={() => copyToClipboard(password)}>
@@ -112,10 +112,10 @@ function PasswordGenerator() {
                     </st.TextPassword>
                   ))}
                 </st.Block>
-              </st.PasswordBlock>
-            </st.Flex>
-          </st.Color>
-        </st.Center>
+              </label>
+            </st.PasswordBlock>
+          </st.Flex>
+        </div>
       </st.Wrapper>
     </st.Section>
   );
